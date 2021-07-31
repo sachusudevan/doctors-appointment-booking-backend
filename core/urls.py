@@ -58,6 +58,9 @@ urlpatterns = [
         url(r'^auth/', include([
             path('', include('apps.authentication.urls')),
         ])),
+        url(r'^user/', include([
+            path('', include('apps.users.urls')),
+        ])),
 
 
 
