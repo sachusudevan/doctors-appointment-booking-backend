@@ -129,13 +129,13 @@ DATABASES = {
     #     'PORT': '3306',
     # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'bdnj8100v1ek7kjmjygf',
-        'USER': 'ukp89buoolujkcyc',
-        'PASSWORD': 'sTqScsuBAFXvdcjYK3Ik',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'df8c9grqrjvjqm',
+        'USER': 'cphozhjqhnwvhg',
+        'PASSWORD': '0917d6cd1c046dfa6abc77df603b8803552e1db13615d497e2cab9047db9e025',
         # Or an IP Address that your DB is hosted on
-        'HOST': 'bdnj8100v1ek7kjmjygf-mysql.services.clever-cloud.com',
-        'PORT': '3306',
+        'HOST': 'ec2-34-204-128-77.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 
 
