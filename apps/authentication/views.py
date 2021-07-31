@@ -13,7 +13,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from core.response import ResponseInfo
 from .serializers import RefreshTokenSerializer, UserSerializer, LoginSerializer, LogoutSerializer, OTPSerializer
-from .schemas import RegisterSchema, LoginSchema, UsersSchema
+from .schemas import LoginPostSchema, RegisterPostSchema, RegisterSchema, LoginSchema, UsersSchema, VerifyOTPPostSchema
 from core.utils import Util
 from core.hashing import Hash
 
@@ -26,7 +26,7 @@ class RegisterAPIView(GenericAPIView):
         self.response_format = ResponseInfo().response
         super(RegisterAPIView, self).__init__(**kwargs)
 
-    serializer_class = UserSerializer
+    serializer_class = RegisterPostSchema
 
     @swagger_auto_schema(tags=["Authorization"])
     def post(self, request):
@@ -80,7 +80,7 @@ class LoginAPIView(GenericAPIView):
         self.response_format = ResponseInfo().response
         super(LoginAPIView, self).__init__(**kwargs)
 
-    serializer_class = LoginSerializer
+    serializer_class = LoginPostSchema
 
     @swagger_auto_schema(tags=["Authorization"])
     def post(self, request):
@@ -119,7 +119,7 @@ class LoginAPIView(GenericAPIView):
 
 class VerifyOTP(GenericAPIView):
     permission_classes = (IsAuthenticated,)
-    serializer_class = OTPSerializer
+    serializer_class = VerifyOTPPostSchema
     def __init__(self, **kwargs):
         self.response_format = ResponseInfo().response
         super(VerifyOTP, self).__init__(**kwargs)
