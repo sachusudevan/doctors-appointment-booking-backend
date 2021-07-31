@@ -24,12 +24,12 @@ from django.views.generic import RedirectView
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Online SuperMarket API",
+        title="Doctors Appointment Booking API",
         default_version='v1',
-        description="An api for SuperMarket Application",
+        description="An api for Doctors Appointment Booking",
         terms_of_service="",
-        contact=openapi.Contact(email="sachusudeve8690@gmail.com"),
-        license=openapi.License(name="SuperMarket License"),
+        contact=openapi.Contact(email="coderflare.py@gmail.com"),
+        license=openapi.License(name=""),
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
