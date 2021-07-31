@@ -89,23 +89,30 @@ class LoginAPIView(GenericAPIView):
             phone = data.get('phone', '')
             password = data.get('password', '')
             user = auth.authenticate(username=phone, password=password)
-
             if user:
-                refresh = RefreshToken.for_user(user)
                 serializer = LoginSchema(user)
 
-                data = {'user': serializer.data, 'token': str(
-                    refresh.access_token), 'refresh': str(refresh)}
-                self.response_format['status_code'] = 200
-                self.response_format["data"] = data
+                if not user.is_active:
+                    data = {'user': {}, 'token': '', 'refresh': ''}
+                    self.response_format['status_code'] = 107
+                    self.response_format["data"] = data
+                    self.response_format["status"] = True
+                    self.response_format["message"] = 'Account Temparary suspended, contact admin'
+                    return Response(self.response_format, status=status.HTTP_200_OK)
+                else:
+                    refresh = RefreshToken.for_user(user)
+                    data = {'user': serializer.data, 'token': str(
+                        refresh.access_token), 'refresh': str(refresh)}
+                    self.response_format['status_code'] = 200
+                    self.response_format["data"] = data
+                    self.response_format["status"] = True
+                    return Response(self.response_format, status=status.HTTP_200_OK)
+
+            else:
+                self.response_format['status_code'] = 106
+                self.response_format["data"] = {'detail': 'Invalid credentials'}
                 self.response_format["status"] = True
-                return Response(self.response_format, status=status.HTTP_200_OK)
-
-
-            self.response_format['status_code'] = 106
-            self.response_format["data"] = {'detail': 'Invalid credentials'}
-            self.response_format["status"] = True
-            return Response(self.response_format, status=status.HTTP_401_UNAUTHORIZED)
+                return Response(self.response_format, status=status.HTTP_401_UNAUTHORIZED)
 
         except Exception as e:
             self.response_format['status_code'] = 101
