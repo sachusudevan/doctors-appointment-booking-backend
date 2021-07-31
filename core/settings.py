@@ -120,12 +120,21 @@ DATABASES = {
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
 
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql', 
+    #     'NAME': 'doctor-appointment-booking',
+    #     'USER': 'root',
+    #     'PASSWORD': '',
+    #     'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+    #     'PORT': '3306',
+    # }
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'doctor-appointment-booking',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'NAME': 'bdnj8100v1ek7kjmjygf',
+        'USER': 'ukp89buoolujkcyc',
+        'PASSWORD': 'sTqScsuBAFXvdcjYK3Ik',
+        # Or an IP Address that your DB is hosted on
+        'HOST': 'bdnj8100v1ek7kjmjygf-mysql.services.clever-cloud.com',
         'PORT': '3306',
     }
 
