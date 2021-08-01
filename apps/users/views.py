@@ -17,10 +17,10 @@ class UpdateUserAPIView(GenericAPIView):
         self.response_format = ResponseInfo().response
         super(UpdateUserAPIView, self).__init__(**kwargs)
 
-    serializer_class = UpdateUserSchema
+    serializer_class = UpdatePostUserSchema
 
     @swagger_auto_schema(tags=["User"])
-    def post(self, request):
+    def put(self, request):
         try:
             user = Users.objects.get(id=request.user.id)
             serializer = UpdatePostUserSchema(user)
@@ -29,6 +29,8 @@ class UpdateUserAPIView(GenericAPIView):
                 phone = request.data.get('phone','')
                 first_name = request.data.get('first_name','')
                 last_name = request.data.get('last_name','')
+                address = request.data.get('address', '')
+                place = request.data.get('place', '')
                 if email:
                     user.email = email
                 if phone:

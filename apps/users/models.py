@@ -75,6 +75,16 @@ class Users(AbstractBaseUser):
         blank=True,
         null=True,
         )
+    place = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+    )
+    address = models.TextField(
+        max_length=500,
+        blank=True,
+        null=True,
+    )
     is_verified           = models.BooleanField(default=False)
     is_admin              = models.BooleanField(default=False)
     is_active             = models.BooleanField(default=True)

@@ -13,7 +13,7 @@ class RegisterSchema(serializers.ModelSerializer):
     class Meta:
         model = Users
         fields = ['email', 'phone', 'username',
-                  'first_name', 'last_name', 'is_admin', 'is_active', 'is_verified', 'is_superuser']
+                  'first_name', 'last_name', 'is_admin', 'is_active', 'is_verified', 'is_superuser', 'address', 'place']
 
 
 class LoginPostSchema(serializers.ModelSerializer):
@@ -25,7 +25,7 @@ class LoginSchema(serializers.ModelSerializer):
     class Meta:
         model = Users
         fields = ['email', 'phone', 'username',
-                  'first_name', 'last_name', 'is_admin', 'is_active', 'is_verified', 'is_superuser']
+                  'first_name', 'last_name', 'is_admin', 'is_active', 'is_verified', 'is_superuser', 'address','place']
 
 
 class UsersSchema(serializers.ModelSerializer):
